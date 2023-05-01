@@ -10,7 +10,6 @@ func SetTask(update tgbotapi.Update) error {
 	task := models.Task{
 		ChatId: update.Message.Chat.ID,
 		Task:   update.Message.Text,
-		Date:   "30.04.2023",
 	}
 
 	if result := DB.Create(&task); result.Error != nil {

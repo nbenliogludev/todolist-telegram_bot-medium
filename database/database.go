@@ -13,7 +13,7 @@ import (
 
 func Init() *gorm.DB {
 	//Connect to database
-	dsn := fmt.Sprintf("host=%s user=%s password=%s port=%s", config.Config("POSTGRES_HOST"), config.Config("POSTGRES_USER"), config.Config("POSTGRES_PASSWORD"), config.Config("POSTGRES_PORT"))
+	dsn := fmt.Sprintf("host=%s user=%s password=%s port=%s, dbname=%s", config.Config("POSTGRES_HOST"), config.Config("POSTGRES_USER"), config.Config("POSTGRES_PASSWORD"), config.Config("POSTGRES_PORT"), "postgres")
 	DB, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal(err)

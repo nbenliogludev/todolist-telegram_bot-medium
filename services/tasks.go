@@ -10,7 +10,7 @@ import (
 )
 
 func Start(bot *tgbotapi.BotAPI, update tgbotapi.Update) {
-	text := "Hi, here you can create todos and and them to your todolist."
+	text := "Hi, here you can create todos for your todolist."
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, text)
 	msg.ReplyMarkup = keyboards.CmdKeyboard()
 	if _, err := bot.Send(msg); err != nil {
@@ -85,7 +85,7 @@ func DeleteTaskCallback(bot *tgbotapi.BotAPI, update tgbotapi.Update, taskId str
 }
 
 func ShowAllTasks(bot *tgbotapi.BotAPI, update tgbotapi.Update) {
-	text := "Your all tasks: \n"
+	text := "Tasks: \n"
 
 	tasks, err := repositories.GetAllTasks(update.Message.Chat.ID)
 	if err != nil {
